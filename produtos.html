@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-br" >
+    <head>
+      
+ <meta charset="UTF-8"/>
+  <title> Carrapet Patashop </title>
+   <link rel="stylesheet" type="text/css" href="estilo.css">
+    </head>
+
+
+    <body>
+    
+ <div id="interface">
+     <header id="cabecalho">
+    <hgroup>
+      <img src="logocarrapet.png" width="240px">
+     </hgroup>
+
+  <nav id="menu">
+ <h1> Menu Principal </h1>
+    <ul>
+    <li> <a href="index.html"> Home </a></li> 
+    <li><a href="produtos.html"> produtos </a> </li>
+    <li><a href="serviços.html"> serviços </a></li>
+    <li> <a href="fale-conosco.html">fale conosco </a></li>
+    </ul> 
+   </nav>
+   <div id="carrinho-box" onclick="toggleCarrinho()">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo_WwnJZLjstA6pXIQDF63lbft52w9qPmSXQ&s" width="40px" height="40px"" id="icon-carrinho">
+      <span id="contador">0</span>
+    </div>
+      <!-- Carrinho script-->
+    <div id="lista-carrinho">
+       <button id="fechar" onclick="toggleCarrinho()">X</button>
+      <h3>Seu carrinho:</h3>
+      <ul id="itens"></ul>
+      <p id="total">Total: R$ 0</p>
+      <button onclick="finalizarCompra()">Concluir</button>
+      <button onclick="limparCarrinho()">Limpar carrinho</button>
+
+    </div>
+    <script>
+      let carrinho = [];
+      let total = 0;
+      
+      function comprar(nome, preco) {
+        carrinho.push(nome);
+        total += preco;
+        atualizarCarrinho();
+      }
+      
+      function atualizarCarrinho() {
+        let lista = document.getElementById("itens");
+        let contador = document.getElementById("contador");
+      
+        lista.innerHTML = "";
+      
+        carrinho.forEach(item => {
+          lista.innerHTML += "<li>" + item + "</li>";
+        });
+      
+        contador.innerHTML = carrinho.length;
+        document.getElementById("total").innerHTML = "Total: R$ " + total;
+      }
+      
+      function finalizarCompra() {
+        alert("Total da compra: R$ " + total.toFixed(2));
+        carrinho = [];
+        total = 0;
+        atualizarCarrinho();
+      }
+
+      function toggleCarrinho() {
+  let box = document.getElementById("lista-carrinho");
+  box.classList.toggle("ativo");
+}
+  function limparCarrinho() {
+  carrinho = [];
+  total = 0;
+
+  atualizarCarrinho();
+}
+      </script>
+     <!--fim do script do carrinho-->
+
+</header>
+ <section>
+  <!-- Barra de pesquisa-->
+<input type="text" id="pesquisa" placeholder="Buscar Produto" onkeyup="buscarProduto()">
+<button id="lupa"> <img src="https://img.freepik.com/vetores-premium/icone-de-pesquisa-vetor-simbolo-de-lupa-de-pesquisa-lupa-sinal-de-lupa-no-estilo-de-neumorfismo-vetor-eps-10_532800-804.jpg" width="14px" height="14px" >
+</button>
+<script>
+   function buscarProduto() {
+     let input = document.getElementById("pesquisa").value.toLowerCase();
+     let cards = document.querySelectorAll(".card");
+   
+     cards.forEach(card => {
+       let texto = card.textContent.toLowerCase();
+   
+       if (texto.includes(input)) {
+         card.style.display = "block";
+       } else {
+         card.style.display = "none";
+       }
+     });
+   }
+   </script>
+   <!--fim do script da barra de pesquisa-->
+<div class="produtos">
+
+<div class="card">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3RUWrI4Zz5emjNyKZjScF8EOiMPUx9MDntA&s" class="imgproduto" width="60px" height="120px">
+ <h3>  Ração Pedigree carne 10kg</h3>
+ <p class="preco"> R$ 100,00</p>
+ <button onclick="comprar('Ração Pedigree', 100)"> Comprar</button>
+
+</div>
+
+ 
+<div class="card">
+
+   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6CuWHF0RH14k09gWFMztHqI_QD_MP-Jw1Tg&s" class="imgproduto">
+    <h3>  Ração Purina Aipo 10kg</h3>
+    <p class="preco"> R$ 130,00</p>
+    <button onclick="comprar( 'Ração Aipo', 130)"> Comprar</button>
+   
+   </div>
+   
+
+   <div class="card">
+
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiE20BSZZyi9vYF-Sx8Lh0o_WNN_NXcsRy8g&s" class="imgproduto">
+       <h3>  Ração Gran Plus (gatos) 10kg</h3>
+       <p class="preco"> R$ 130,00</p>
+       <span class="badge"> -30%</span>
+       <button onclick="comprar('Ração Gran Plus' , 130)"> Comprar</button>
+      
+      </div>
+      
+      <div class="card">
+
+         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5bZMapKWXtvJh5J2vBe8fqtbHD2n5x4h09w&s" class=" imgproduto">
+          <h3>  Brinquedo Jambo pet silicone</h3>
+          <p class="preco"> R$ 25,00</p>
+          <button onclick="comprar( 'Brinquedo jambo', 25)"> Comprar</button>
+         
+         </div>
+         
+  
+         <div class="card">
+
+            <img src="https://images.petz.com.br/fotos/20001320000553_1732641174238.jpg" 
+            class="imgproduto" width="120px">
+             <h3>  Ração Golden Special para Gatos Castrados Sabor Frango </h3>
+             <p class="preco"> R$ 165,90</p>
+             <button onclick="comprar( 'Ração Golden Special P/gatos', 165.90)"> Comprar</button> <br>
+            
+            </div>
+
+
+
+
+
+            <div class="card">
+
+               <img src="https://images.petz.com.br/fotos/10002310000032_1770146642399_mini.jpg" class="imgproduto" width="120px">
+                <h3>  Ração golden special para caes adultos sabor-frango e carne </h3>
+                <p class="preco"> R$ 138,90</p>
+                <button onclick="comprar( 'Ração Golden Special P/ cães' , 138.90)"> Comprar</button> <br>
+               
+               </div>
+   
+   
+
+
+
+
+
+               <div class="card">
+
+                  <img src="https://images.petz.com.br/fotos/10001330000180_1758819245128_mini.jpg" class="imgproduto" width="120px">
+                   <h3>  Ração Premier Nutrição Clínica Hipoalergênico </h3>
+                   <p class="preco"> R$ 379,90</p>
+                   <span class="badge"> -15%</span>
+                   <button onclick="comprar('Ração Premier Nutrição', 379.90)"> Comprar</button> <br>
+                  
+                  </div>
+      
+      
+
+                  <div class="card">
+
+                     <img src="https://images.petz.com.br/fotos/1712059535460_mini.jpg"  class="imgproduto" width="120px">
+                      <h3>  Ração seca Royal Canin Veterinary Diet </h3>
+                      <p class="preco"> R$ 105,60</p>
+                      <button onclick="comprar( 'Ração seca Royal Chain', 105.60)"> Comprar</button> <br>
+                     
+                     </div>
+         
+         
+
+                     <div class="card">
+
+                        <img src="https://images.petz.com.br/fotos/10001320001010_1759332201870_mini.jpg" class="imgproduto" width="120px">
+                         <h3>  Ração Fórmula Natural Pró para Cães Adultos </h3>
+                         <p class="preco"> R$ 330,99</p>
+                         <span class="badge"> TEMPO LIMITADO!</span>
+                         <button onclick="comprar( 'Ração Fórmula Natural Pró', 330.99)"> Comprar</button> <br>
+                        
+                        </div>
+          
+       
+                        <div class="card">
+
+                           <img src="https://images.petz.com.br/fotos/1711656143873_mini.jpg" class="imgproduto" width="120px">
+                            <h3>  Ração Úmida Royal Canin Lata Veterinary Diet </h3>
+                            <p class="preco"> R$ 37,90</p>
+                            <button onclick="comprar( 'Ração Úmida Royal Canin', 37.90)"> Comprar</button> <br>
+                           
+                           </div>
+             
+                        
+             
+                           <div class="card">
+
+                              <img src="https://images.petz.com.br/fotos/10031200000530_1743698857428_mini.jpg" class="imgproduto" width="120px">
+                               <h3>  Eliminador de odores alfazema Pet </h3>
+                               <p class="preco"> R$ 69,90</p>
+                               <button onclick="comprar( 'Eliminador de odores Alfazema', 69.90)"> Comprar</button> <br>
+                              
+                              </div>
+
+                              
+                           <div class="card">
+
+                              <img src="https://images.petz.com.br/fotos/10037090003664_1739478738388.jpg" class="imgproduto" width="120px">
+                               <h3>  Cama Spike duplo cinza </h3>
+                               <p class="preco"> R$ 132,99</p>
+                               <button onclick="comprar( 'Cama Spike Duplo', 132.99)"> Comprar</button> <br>
+                              
+                              </div>
+
+
+
+                              
+                           <div class="card">
+
+                              <img src="https://images.petz.com.br/fotos/10037090003736_1751977961870_mini.jpg" class="imgproduto" width="120px">
+                               <h3>  Cama Bonito pra Cachorro Casinha Urso Caqui </h3>
+                               <p class="preco"> R$ 359,90</p>
+                               <button onclick="comprar( 'Cama Casinha Urso', 359.90)"> Comprar</button> <br>
+                              
+                              </div>
+
+                              
+                           <div class="card">
+
+                              <img src="https://images.petz.com.br/fotos/1564416018894_mini.jpg" class="imgproduto" width="120px">
+                               <h3>  Vermífugo Ourofino Top Dog para Cães 10kg </h3>
+                               <p class="preco"> R$ 63,99</p>
+                               <button onclick="comprar('Vermifugo Ourofino', 63.99)"> Comprar</button> <br>
+                              
+                              </div>
+
+
+
+
+
+
+
+                              
+                           <div class="card">
+
+                              <img src="https://images.petz.com.br/fotos/1572360557501_mini.jpg" class="imgproduto" width="120px">
+                               <h3>  Vermífugo Milbemax para Gatos 16/40mg </h3>
+                               <p class="preco"> R$ 56,99</p>
+                               <button onclick="comprar( 'Vermifugo Milbemax', 57)"> Comprar</button> <br>
+                              
+                              </div>
+
+
+
+
+
+
+
+                              
+                           <div class="card">
+
+                              <img src="https://images.petz.com.br/fotos/10037080003992_1751379579615_mini.jpg" class="imgproduto" width="120px">
+                               <h3>  Brinquedo Spike Bola Crocante para Cães </h3>
+                               <p class="preco"> R$ 49,99</p>
+                               <button onclick="comprar('Brinquedo Spike bola', 50)"> Comprar</button> <br>
+                              
+                              </div>
+
+
+
+
+
+                              
+                           <div class="card">
+
+                              <img src="https://images.petz.com.br/fotos/10037080004188_1737744346578_mini.jpg" class="imgproduto" width="120px">
+                               <h3> Brinquedo Spike Alho-Poró de Pelúcia para Cães </h3>
+                               <p class="preco"> R$ 59,99</p>
+                               <button onclick="comprar('Brinque Alho-Poró', 60)"> Comprar</button> <br>
+                              
+                              </div>
+
+
+
+
+
+                              
+                           <div class="card">
+
+                              <img src="https://images.petz.com.br/fotos/10037080004204_1737740835561_mini.jpg" class="imgproduto" width="120px">
+                               <h3>  Brinquedo de Pelúcia Spike Milho para Cães </h3>
+                               <p class="preco"> R$ 49,90</p>
+                               <button onclick="comprar( 'Brinquedo de Pelúcia Milho' , 49.90)"> Comprar</button> <br>
+                              
+                              </div>
+
+
+
+
+
+
+
+                              
+                           <div class="card">
+
+                              <img src="https://images.petz.com.br/fotos/40013030000776_1730810189220_mini.jpg" class="imgproduto" width="120px">
+                               <h3>  Néctar reino das aves para beija-flor </h3>
+                               <p class="preco"> R$ 21,90</p>
+                               <button onclick="comprar('Néctar P/ Beija-flor', 22)"> Comprar</button> <br>
+                              
+                              </div>
+
+
+
+
+
+
+                              
+                           <div class="card">
+
+                              <img src="https://images.petz.com.br/fotos/1617109909022_mini.jpg" class="imgproduto" width="120px">
+                               <h3>  Viveiro Chalesco Pássaros Pequeno </h3>
+                               <p class="preco"> R$ 1850,00</p>
+                               <button onclick="comprar('Viveiro para passaros pequenos', 1850)"> Comprar</button> <br>
+                              
+                              </div>
+
+
+
+
+
+
+                              
+                           <div class="card">
+
+                              <img src="https://images.petz.com.br/fotos/40013030000447_1752259025494_mini.jpg" class="imgproduto" width="120px">
+                               <h3>  Ração Nutrópica para canarinho </h3>
+                               <p class="preco"> R$ 33,99</p>
+                               <button onclick="comprar('ração para canarinho', 33.99)"> Comprar</button> <br>
+                              
+                              </div>
+
+                                  
+                           <div class="card">
+
+                              <img src="https://amepettatix.vtexassets.com/arquivos/ids/193974-300-300?v=638839560282300000&width=300&height=300&aspect=true" class="imgproduto" width="120px">
+                               <h3>  Comedouro Plástico Gato </h3>
+                               <p class="preco"> R$ 5,90</p>
+                               <button onclick="comprar('Comedouro Plástico Gato', 5.90)"> Comprar</button> <br>
+                              
+                              </div>
+
+
+                                  
+                           <div class="card">
+
+                              <img src="https://amepettatix.vtexassets.com/arquivos/ids/189579-300-300?v=638621192936730000&width=300&height=300&aspect=true" class="imgproduto" width="120px">
+                               <h3>  Fonte Bebedouro Aqua First</h3>
+                               <p class="preco"> R$ 120,00</p>
+                               <button onclick="comprar('Fonte Bebedouro Aqua First', 120.00)"> Comprar</button> <br>
+                              
+                              </div>
+
+                                  
+                           <div class="card">
+
+                              <img src="https://amepettatix.vtexassets.com/arquivos/ids/173091-300-300?v=638253760344130000&width=300&height=300&aspect=true" class="imgproduto" width="120px">
+                               <h3>  Caixa Transporte Gato</h3>
+                               <p class="preco"> R$ 67,00</p>
+                               <button onclick="comprar('Caixa TRansporte Catlove', 67.00)"> Comprar</button> <br>
+                              
+                              </div>
+
+                                  
+                           <div class="card">
+
+                              <img src="https://amepettatix.vtexassets.com/arquivos/ids/171849-300-300?v=638253754999830000&width=300&height=300&aspect=true" class="imgproduto" width="120px">
+                               <h3>  Pet delicia caes risotinho </h3>
+                               <p class="preco"> R$ 19,99</p>
+                               <button onclick="comprar('Pet delicia caes risotinho', 19.99)"> Comprar</button> <br>
+                              
+                              </div>
+                
+
+</div>
+
+</body>
+
+</html>

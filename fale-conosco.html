@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Carrapet Patashop</title>
+  <link rel="stylesheet" type="text/css" href="estilo.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    
+  
+    
+  </style>
+</head>
+
+<body>
+<div id="interface">
+
+  
+  <header id="cabecalho">
+    <hgroup>
+      <img src="logocarrapet.png" width="240px">
+    </hgroup>
+    <nav id="menu">
+      <h1> Menu Principal </h1>
+      <ul>
+        <li><a href="index.html"> Home </a></li>
+        <li><a href="produtos.html"> produtos </a></li>
+        <li><a href="serviços.html"> serviços </a></li>
+        <li><a href="fale-conosco.html">fale conosco </a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <h2 id="fale-conosco">Fale Conosco</h2>
+
+  <div class="contato">
+
+    <form onsubmit="enviarMensagem(event)">
+      <input type="text" id="nome" placeholder="Seu nome" required>
+      <input type="email" id="email" placeholder="Seu email" required>
+      <textarea id="mensagem" placeholder="Sua mensagem" required></textarea>
+      <button type="submit">Enviar</button>
+      <p id="resposta"></p>
+    </form>
+
+    <div class="info-contato">
+
+      <div class="card-info">
+        <h3>Endereço</h3>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7bgqwiuQkg3ESE1fhDuc80HfmrrNIKF-slA&s" width="60px" class="falecns">
+        <p>Rua dos bichinhos, 123 </p>
+      </div>
+
+      <div class="card-info">
+        <h3>Telefone</h3>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl4qV8byPpkmX-M-jB8BUPb7AkC0Cqr_UFng&s" width="60px" class="falecns">
+        <p>(21) 99999-9999</p>
+      </div>
+
+      <div class="card-info">
+        <h3>WhatsApp</h3>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmductGj2j9fClpopyWNyeb0VWKwrBRNcKjA&s" width="60px">
+        <a href="https://wa.me/5521969449329" target="_blank" class="falecnsw">
+          Falar no WhatsApp
+        </a>
+      </div>
+
+      <div class="card-info">
+        <h3>Email</h3>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYT3exZabjNNYv5MxMC3keJeyNFeXrLpERLQ&s" width="60px" class="falecns">
+        <p>contato@petshop.com</p>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!--Script do fale conosco-->
+<script>
+function enviarMensagem(event) {
+  event.preventDefault();
+  let nome = document.getElementById("nome").value;
+  document.getElementById("resposta").innerText =
+    "Obrigado, " + nome + "! Entraremos em contato em breve.";
+  document.querySelector("form").reset();
+}
+</script>
+<!--fim do Script-->
+
+</body>
+</html>

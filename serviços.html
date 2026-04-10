@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br" >
+    <head>
+      
+ <meta charset="UTF-8"/>
+  <title> Carrapet Patashop </title>
+   <link rel="stylesheet" type="text/css" href="estilo.css">
+  
+    </head>
+
+
+    <body>
+    
+ <div id="interface">
+     <header id="cabecalho">
+    <hgroup>
+      <img src="logocarrapet.png" width="240px">
+     </hgroup>
+
+  <nav id="menu">
+ <h1> Menu Principal </h1>
+    <ul>
+    <li> <a href="index.html"> Home </a></li> 
+    <li><a href="produtos.html"> produtos </a> </li>
+    <li><a href="serviços.html"> serviços </a></li>
+    <li> <a href="fale-conosco.html">fale conosco </a></li>
+    </ul> 
+   </nav>
+  
+
+</header>
+
+<section class="servicos">
+
+    <div class="card-servico">
+      <h3>Banho e Tosa </h3>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxK7THmnS2eWrPHG75XMKG_enUw5cw63Houg&s" class="img-servico">
+      <p>Deixe seu pet limpo e cheiroso com nossos cuidados especiais.</p>
+      <button onclick="agendar('Banho e Tosa')">Agendar</button>
+    </div>
+  
+    <div class="card-servico">
+      <h3>Consulta Veterinária </h3>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-uOGcEY-cu6i4-Db1DgjlhD4U-R-N6k7gnQ&s" class="img-servico">
+      <p>Avaliação completa para manter a saúde do seu pet em dia.</p>
+      <button onclick="agendar('Consulta Veterinária')">Agendar</button>
+    </div>
+  
+    <div class="card-servico">
+      <h3>Vacinação </h3>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo_B4eii7qIf5VNNpn6bhNftAu7nBwfJSicg&s" class="img-servico">
+      <p>Proteja seu pet com as vacinas essenciais.</p>
+      <button onclick="agendar('Vacinação')">Agendar</button>
+    </div>
+  
+    <div class="card-servico">
+      <h3>Entrega de Produtos </h3>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFQxqCoZ6M_Hmc6vDVZhfpX4i5wC1PL6T-WQ&s" class="img-servico">
+      <p>Receba tudo que seu pet precisa sem sair de casa.</p>
+      <button onclick="agendar('Entrega')">Agendar</button>
+    </div>
+  
+  </section>
+        <!--Script do serviço-->
+  <script>
+    function agendar(servico) {
+      alert("Você escolheu: " + servico);
+      
+    }
+    </script>
+
+ <!--Fim do script do serviço-->
+
+ <div id="modal-agendamento">
+
+    <div class="modal-conteudo">
+      <span class="fechar" onclick="fecharModal()">X</span>
+  
+      <h2 id="titulo-servico"></h2>
+  
+      <button> LOJA (08:00 a 00:00 todos os dias)</button>
+      <button> RETIRADA (09:00 as 22:00 todos os dias)</button>
+   
+    </div>
+  
+  </div>
+    <script>
+  function agendar(servico) {
+    document.getElementById("modal-agendamento").style.display = "flex";
+    document.getElementById("titulo-servico").innerText = servico;
+  }
+  
+  function fecharModal() {
+    document.getElementById("modal-agendamento").style.display = "none";
+  }
+
+</script>
+
+
+</div>
+</body>
+</html>
